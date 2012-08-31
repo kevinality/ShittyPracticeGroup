@@ -18,6 +18,9 @@ namespace ShittyPracticeGroup
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private Texture2D background;
+        private Texture2D hero;
+        private Texture2D boss;
 
         public Game1()
         {
@@ -44,10 +47,14 @@ namespace ShittyPracticeGroup
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            
+            background = Content.Load<Texture2D>("stars");
+            hero = Content.Load<Texture2D>("Hero");
+            boss = Content.Load<Texture2D>("Minhaga");
             // TODO: use this.Content to load your game content here
+
         }
 
         /// <summary>
@@ -86,6 +93,13 @@ namespace ShittyPracticeGroup
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 680), Color.White);
+
+            spriteBatch.End();
+
         }
     }
 }
