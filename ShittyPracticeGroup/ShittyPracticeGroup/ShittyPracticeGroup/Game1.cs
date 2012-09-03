@@ -55,6 +55,7 @@ namespace ShittyPracticeGroup
             boss = Content.Load<Texture2D>("Minhaga");
             // TODO: use this.Content to load your game content here
 
+            // TODO: add classes for BG, Hero, and Boss. They will manage their own UI, updates, logic, and input handling.
         }
 
         /// <summary>
