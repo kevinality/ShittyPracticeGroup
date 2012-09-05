@@ -70,13 +70,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hero-scale2x.png">
-      <Name>Hero-scale2x</Name>
+    <Compile Include="heroTest.png">
+      <Name>heroTest</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Hero-scale2xTrans.png">
-      <Name>Hero-scale2xTrans</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bossTest.png">
+      <Name>bossTest</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

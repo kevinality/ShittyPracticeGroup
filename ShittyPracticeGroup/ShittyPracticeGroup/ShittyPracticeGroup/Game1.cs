@@ -18,14 +18,23 @@ namespace ShittyPracticeGroup
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+				Hero hero;
+				Boss boss;
+				Rectangle screenRectangle;
+
         private Texture2D background;
-        private Texture2D hero;
-        private Texture2D boss;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+						screenRectangle = new Rectangle(
+						0,
+						0,
+						graphics.PreferredBackBufferWidth,
+						graphics.PreferredBackBufferHeight);
+
         }
 
         /// <summary>
@@ -51,11 +60,15 @@ namespace ShittyPracticeGroup
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
             background = Content.Load<Texture2D>("stars");
-            hero = Content.Load<Texture2D>("Hero");
-            boss = Content.Load<Texture2D>("Minhaga");
+            Texture2D tempHeroTexture = Content.Load<Texture2D>("heroTest");
+						Texture2D tempBossTexture = Content.Load<Texture2D>("bossTest");
+
+						hero = new Hero(tempHeroTexture, screenRectangle);
+						boss = new Boss(tempBossTexture, screenRectangle);
+            
             // TODO: use this.Content to load your game content here
 
-            // TODO: add classes for BG, Hero, and Boss. They will manage their own UI, updates, logic, and input handling.
+    
         }
 
         /// <summary>
@@ -78,7 +91,8 @@ namespace ShittyPracticeGroup
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            hero.Update();
+						boss.Update();
 
             base.Update(gameTime);
         }
@@ -89,17 +103,24 @@ namespace ShittyPracticeGroup
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
 
-            base.Draw(gameTime);
+
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 680), Color.White);
 
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 680), Color.White);
+            
+						hero.Draw(spriteBatch);
+						
+						boss.Draw(spriteBatch);
+            
             spriteBatch.End();
+
+						base.Draw(gameTime);
 
         }
     }
